@@ -1,0 +1,10 @@
+{
+  "description": "An e-commerce platform offering clothes, hats, and shoes with light/dark themes, mobile payments, and owner tools for easy product management.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -261,42 +261,20 @@ export function Icon({
 }
 
 /**
- * 4-SECOND COOL BRAND SPLASH ANIMATION
+ * SHOWS BRAND LOGO CLEANLY FOR 4 SECONDS BEFORE OPENING THE SITE
  */
 function IntroSplash({ onFinish }: { onFinish: () => void }) {
-  const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
-  const [statusText, setStatusText] = useState("INITIALIZING ENGINE...");
 
   useEffect(() => {
-    const startTime = Date.now();
-    const duration = 4000; // 4 seconds total
+    // Show logo for 4 seconds before opening the site
+    const timer = setTimeout(() => {
+      setIsExiting(true);
+      setTimeout(onFinish, 400);
+    }, 4000);
 
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const currentProgress = Math.min(100, Math.floor((elapsed / duration) * 100));
-      setProgress(currentProgress);
-
-      if (elapsed > 1200 && elapsed <= 2400) {
-        setStatusText("SYNCING NAIROBI STREETWEAR...");
-      } else if (elapsed > 2400 && elapsed <= 3400) {
-        setStatusText("DROP 004 ASSETS UNLOCKED");
-      } else if (elapsed > 3400) {
-        setStatusText("ACCESS GRANTED");
-      }
-
-      if (elapsed >= 3600 && !isExiting) {
-        setIsExiting(true);
-      }
-
-      if (elapsed >= duration) {
-        clearInterval(interval);
-        onFinish();
-      }
-    }, 40);
-
-    return () => clearInterval(interval);
-  }, [onFinish, isExiting]);
+    return () => clearTimeout(timer);
+  }, [onFinish]);
 
   const handleSkip = () => {
     setIsExiting(true);
@@ -304,58 +282,19 @@ function IntroSplash({ onFinish }: { onFinish: () => void }) {
   };
 
   return (
-    <div className={`intro-splash ${isExiting ? "intro-exit" : ""}`} role="dialog" aria-modal="true">
-      {/* Background ambient cosmos glow */}
-      <div className="intro-bg-glow" />
-      <div className="intro-grid-mesh" />
-
-      {/* Skip button for quick convenience */}
-      <button className="intro-skip-btn" onClick={handleSkip} aria-label="Skip intro animation">
-        <span>Skip</span>
-        <Icon name="arrow" size={12} />
-      </button>
-
-      <div className="intro-centerpiece">
-        {/* Animated outer orbital rings */}
-        <div className="intro-orbit-ring ring-outer" />
-        <div className="intro-orbit-ring ring-inner" />
-        
-        {/* Glowing aura around brand logo */}
-        <div className="intro-logo-glow" />
-
-        {/* The User's Brand Logo */}
-        <div className="intro-logo-wrapper">
-          <img
-            src="/brand-logo.jpg"
-            alt="Original & Crazy Brand Logo"
-            className="intro-logo-img"
-          />
-          {/* Laser shine overlay sweep */}
-          <div className="intro-shine-sweep" />
-          {/* Gleaming central star pulse */}
-          <div className="intro-center-star-burst" />
-        </div>
-
-        {/* Cinematic brand title reveal */}
-        <div className="intro-brand-title">
-          <div className="intro-main-brand">
-            <span>ORIGINAL</span>
-            <b className="purple-text">&amp; CRAZY</b>
-          </div>
-          <p className="intro-sub-brand">NAIROBI STREETWEAR &bull; DROP 004</p>
-        </div>
-      </div>
-
-      {/* Bottom loading HUD and laser progress bar */}
-      <div className="intro-footer-hud">
-        <div className="intro-hud-status">
-          <span className="intro-status-dot" />
-          <span className="intro-status-text">{statusText}</span>
-          <span className="intro-percentage">{progress}%</span>
-        </div>
-        <div className="intro-progress-track">
-          <div className="intro-progress-bar" style={{ width: `${progress}%` }} />
-        </div>
+    <div
+      className={`intro-splash ${isExiting ? "intro-exit" : ""}`}
+      onClick={handleSkip}
+      role="dialog"
+      aria-modal="true"
+      title="Click to enter"
+    >
+      <div className="intro-logo-container">
+        <img
+          src="/brand-logo.jpg"
+          alt="Original & Crazy"
+          className="intro-clean-logo"
+        />
       </div>
     </div>
   );
@@ -791,7 +730,7 @@ function Footer({ onReplayIntro }: { onReplayIntro?: () => void }) {
           {onReplayIntro && (
             <button className="footer-replay-btn" onClick={onReplayIntro}>
               <Icon name="play" size={12} />
-              <span>Replay Intro</span>
+              <span>Show Logo</span>
             </button>
           )}
         </div>
@@ -840,9 +779,9 @@ function Home() {
               <span>Shop the Drop</span>
               <Icon name="arrow" size={18} />
             </Link>
-            <button className="secondary-button" onClick={replayIntro} title="Watch Brand Intro">
+            <button className="secondary-button" onClick={replayIntro} title="View Brand Logo">
               <Icon name="play" size={14} />
-              <span>Brand Intro</span>
+              <span>Brand Logo</span>
             </button>
           </div>
 

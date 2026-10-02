@@ -119,329 +119,40 @@ img {
 }
 
 /* ==========================================================================
-   4-SECOND COOL BRAND SPLASH ANIMATION
+   4-SECOND CLEAN LOGO DISPLAY
    ========================================================================== */
 .intro-splash {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: #06040a;
+  background: #000000;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  color: #fff;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
 }
 
 .intro-exit {
   opacity: 0;
-  transform: scale(1.08);
-  filter: blur(14px);
   pointer-events: none;
 }
 
-.intro-bg-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(155, 92, 255, 0.32) 0%, rgba(116, 28, 255, 0.14) 40%, rgba(6, 4, 10, 0) 70%);
-  filter: blur(40px);
-  animation: cosmicPulse 3s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes cosmicPulse {
-  0% { transform: scale(0.85); opacity: 0.6; }
-  100% { transform: scale(1.25); opacity: 0.95; }
-}
-
-.intro-grid-mesh {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(155, 92, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155, 92, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
-  pointer-events: none;
-}
-
-.intro-skip-btn {
-  position: absolute;
-  top: max(20px, env(safe-area-inset-top, 20px));
-  right: max(20px, env(safe-area-inset-right, 20px));
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #d1c8de;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 99px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  backdrop-filter: blur(10px);
-  transition: all .2s ease;
-}
-
-.intro-skip-btn:hover {
-  background: rgba(155, 92, 255, 0.25);
-  border-color: #9b5cff;
-  color: #fff;
-}
-
-.intro-centerpiece {
-  position: relative;
+.intro-logo-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 5;
-  perspective: 1000px;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
-/* Orbiting Rings */
-.intro-orbit-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  pointer-events: none;
-  transform-style: preserve-3d;
-}
-
-.ring-outer {
-  width: clamp(280px, 44vw, 420px);
-  height: clamp(140px, 22vw, 210px);
-  border: 1.5px dashed rgba(155, 92, 255, 0.45);
-  border-top-color: #c6ff42;
-  box-shadow: 0 0 20px rgba(155, 92, 255, 0.3);
-  transform: translate(-50%, -60%) rotateX(68deg) rotateZ(0deg);
-  animation: spinOrbit 8s linear infinite;
-}
-
-.ring-inner {
-  width: clamp(230px, 36vw, 340px);
-  height: clamp(110px, 18vw, 170px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-right-color: #9b5cff;
-  border-left-color: #9b5cff;
-  transform: translate(-50%, -60%) rotateX(72deg) rotateZ(360deg);
-  animation: spinOrbitRev 5s linear infinite;
-}
-
-@keyframes spinOrbit {
-  to { transform: translate(-50%, -60%) rotateX(68deg) rotateZ(360deg); }
-}
-
-@keyframes spinOrbitRev {
-  to { transform: translate(-50%, -60%) rotateX(72deg) rotateZ(0deg); }
-}
-
-.intro-logo-glow {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #9b5cff 0%, transparent 70%);
-  filter: blur(30px);
-  opacity: 0.8;
-  animation: glowPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulse {
-  from { opacity: 0.5; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1.2); }
-}
-
-.intro-logo-wrapper {
-  position: relative;
-  width: clamp(170px, 30vw, 240px);
+.intro-clean-logo {
+  width: min(85vw, 360px);
+  height: auto;
   aspect-ratio: 1 / 1;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 
-    0 0 50px rgba(116, 28, 255, 0.7),
-    0 0 100px rgba(155, 92, 255, 0.35),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
-  animation: logoEntrance 1.4s cubic-bezier(0.2, 0.85, 0.32, 1.15) forwards;
-  background: #000;
-}
-
-@keyframes logoEntrance {
-  0% {
-    transform: scale(0.4) rotate(-14deg);
-    opacity: 0;
-    filter: blur(12px);
-  }
-  60% {
-    transform: scale(1.06) rotate(3deg);
-    opacity: 1;
-    filter: blur(0);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-.intro-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
-}
-
-/* Light specular sweep */
-.intro-shine-sweep {
-  position: absolute;
-  inset: -100% 0 0 -100%;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(
-    135deg,
-    transparent 42%,
-    rgba(255, 255, 255, 0.5) 50%,
-    transparent 58%
-  );
-  animation: shineAcross 3.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
-  pointer-events: none;
-}
-
-@keyframes shineAcross {
-  0% { transform: translate(-30%, -30%); }
-  50%, 100% { transform: translate(30%, 30%); }
-}
-
-/* Star burst gleam */
-.intro-center-star-burst {
-  position: absolute;
-  top: 48%;
-  left: 42%;
-  width: 26px;
-  height: 26px;
-  background: radial-gradient(circle, #fff 0%, rgba(198, 255, 66, 0.8) 40%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: starPulse 1.6s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes starPulse {
-  0% { transform: scale(0.6); opacity: 0.4; }
-  100% { transform: scale(1.8); opacity: 1; box-shadow: 0 0 15px #fff; }
-}
-
-/* Title reveal */
-.intro-brand-title {
-  margin-top: 26px;
-  text-align: center;
-  animation: titleRise 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
-}
-
-@keyframes titleRise {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-    letter-spacing: 0.1em;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.intro-main-brand {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: clamp(22px, 4vw, 36px);
-  letter-spacing: -.04em;
-  line-height: .95;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.purple-text {
-  color: #9b5cff;
-  text-shadow: 0 0 20px rgba(155, 92, 255, 0.6);
-}
-
-.intro-sub-brand {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(10px, 1.4vw, 12px);
-  font-weight: 700;
-  letter-spacing: .25em;
-  color: #a8a3ad;
-  margin: 8px 0 0;
-  text-transform: uppercase;
-}
-
-/* Bottom HUD & Laser Progress */
-.intro-footer-hud {
-  position: absolute;
-  bottom: max(32px, env(safe-area-inset-bottom, 32px));
-  width: min(340px, 86vw);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 5;
-}
-
-.intro-hud-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 10px;
-  letter-spacing: .12em;
-  font-weight: 800;
-  color: #d1c8de;
-}
-
-.intro-status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
-  display: inline-block;
-  margin-right: 6px;
-  animation: pulseDot 1.4s infinite;
-}
-
-.intro-status-text {
-  flex: 1;
-  text-transform: uppercase;
-}
-
-.intro-percentage {
-  color: #9b5cff;
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 11px;
-}
-
-.intro-progress-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 99px;
-  overflow: hidden;
-}
-
-.intro-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #741cff, #9b5cff, #c6ff42);
-  border-radius: 99px;
-  box-shadow: 0 0 10px #9b5cff;
-  transition: width 0.08s linear;
 }
 
 /* ==========================================================================

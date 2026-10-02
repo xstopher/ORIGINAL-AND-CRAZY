@@ -10,7 +10,7 @@ import {
   useOutletContext,
   useSearchParams,
 } from "react-router";
-import brandLogoUrl from "@/assets/brand-logo.jpg";
+import brandLogoUrl from "../assets/brand-logo.jpg";
 
 
 export type Category = "Clothes" | "Hats" | "Shoes";

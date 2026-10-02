@@ -10,6 +10,8 @@ import {
   useOutletContext,
   useSearchParams,
 } from "react-router";
+import brandLogoUrl from "@/assets/brand-logo.jpg";
+
 
 export type Category = "Clothes" | "Hats" | "Shoes";
 export type Product = {
@@ -291,7 +293,7 @@ function IntroSplash({ onFinish }: { onFinish: () => void }) {
     >
       <div className="intro-logo-container">
         <img
-          src="/brand-logo.jpg"
+          src={brandLogoUrl}
           alt="Original & Crazy"
           className="intro-clean-logo"
         />
@@ -563,7 +565,7 @@ function Root() {
         {/* Brand Header with actual animated logo icon */}
         <Link className="brand" to="/" aria-label="Original and Crazy home">
           <div className="brand-logo-badge">
-            <img src="/brand-logo.jpg" alt="OC Logo" className="header-brand-img" />
+            <img src={brandLogoUrl} alt="OC Logo" className="header-brand-img" />
           </div>
           <div className="brand-text">
             <span>ORIGINAL</span>
@@ -712,7 +714,7 @@ function Footer({ onReplayIntro }: { onReplayIntro?: () => void }) {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-brand-wrap">
-          <img src="/brand-logo.jpg" alt="OC Brand Logo" className="footer-logo-img" />
+          <img src={brandLogoUrl} alt="OC Brand Logo" className="footer-logo-img" />
           <Link className="brand footer-brand" to="/">
             <span>ORIGINAL</span>
             <b>&amp; CRAZY</b>

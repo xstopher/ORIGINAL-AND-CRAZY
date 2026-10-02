@@ -2077,17 +2077,17 @@ img {
     display: grid;
   }
 
-  /* Clean minimal mobile header — brand left, actions right */
+  /* Taller, bolder mobile header */
   .header {
-    height: 60px;
+    height: 72px;
     grid-template-columns: 1fr auto;
-    padding: 0 16px;
+    padding: 0 20px;
     padding-top: var(--safe-top);
     gap: 0;
     align-items: center;
   }
 
-  /* Fully remove these from grid flow so they don't eat grid cells */
+  /* Fully remove these from grid flow */
   .header-left,
   .nav,
   .brand-badge,
@@ -2096,24 +2096,38 @@ img {
     display: none !important;
   }
 
-  /* Brand sits in col 1 row 1 automatically */
+  /* Brand — bigger logo badge + text */
   .brand {
-    gap: 8px;
+    gap: 10px;
     justify-self: start;
   }
 
   .brand-logo-badge {
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border-width: 2px;
+    box-shadow: 0 0 18px var(--purple-glow);
   }
 
   .brand-text span, .brand-text b {
-    font-size: 13px;
+    font-size: 16px;
   }
 
-  /* Actions sit in col 2 row 1 automatically */
+  /* Action buttons — larger touch targets */
   .header-actions {
+    gap: 8px;
+  }
+
+  .icon-button {
+    width: 46px;
+    height: 46px;
+  }
+
+  .cart-button {
+    padding: 0 8px 0 14px;
+    height: 46px;
+    font-size: 13px;
     gap: 6px;
   }
 
@@ -2121,15 +2135,10 @@ img {
     display: none;
   }
 
-  .cart-button {
-    padding: 0 5px 0 9px;
-    height: 36px;
-  }
-
   .cart-badge {
-    width: 22px;
-    height: 22px;
-    font-size: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
   }
 
   /* 2-Column Product Grid for Mobile Streetwear Look */

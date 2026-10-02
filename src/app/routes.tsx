@@ -618,14 +618,14 @@ function Root() {
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             aria-label="Toggle theme"
           >
-            <Icon name={theme === "light" ? "moon" : "sun"} size={18} />
+            <Icon name={theme === "light" ? "moon" : "sun"} size={22} />
           </button>
           <button
             className="cart-button"
             onClick={() => setCartOpen(true)}
             aria-label={`Open shopping bag with ${itemCount} items`}
           >
-            <Icon name="bag" size={18} />
+            <Icon name="bag" size={22} />
             <span className="cart-text">Bag</span>
             <b className="cart-badge">{itemCount}</b>
           </button>
